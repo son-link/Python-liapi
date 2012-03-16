@@ -10,3 +10,31 @@ Atentamente: Alfonso Saavedra "Son Link"
 http://sonlinkblog.blogspot.com/p/python-liapi.html
 
 Proyecto bajo licencia GPLv3
+
+Variables globales:
+	·lang: Idioma de los libros (por defecto todos). Los posibles valores son spanish y english
+	·limit: Cantidad de resultados a obtener. Por defecto Liapi devuelve 10
+
+Funciones:
+	.getData(*params): Devuelve una lista con los resultados de la consulta.
+	·getCat(idcat): Devuelve la variable que se le pasara a la hora de consular los libros de una categoría en concreto (numérico).
+	·getBookInfo(bookid): Obtenemos la información del libro (numérico)
+	·searchByTags(tags): Busca los libros que contengan al menos una de las etiquetas (lista)
+	·criteria(crit): Busca los libros que cumplen estos criterios (numérico):
+		1: Mas vistos
+		2: Mas comentados
+		3: Mas votados
+		4: Mejor valorados
+	
+Ejemplo de uso
+
+import liapi
+
+liapi = Liapi()
+liapi.lang='spanish'
+liapi.limit = 25
+tags = liapi.searchByTags(['html', 'php'])
+data = liapi.getData(tags)
+	
+for d in data:
+	print d['title']
